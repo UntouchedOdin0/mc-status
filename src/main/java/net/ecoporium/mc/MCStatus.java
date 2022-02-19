@@ -35,10 +35,16 @@ public class MCStatus {
         }
 
         if (object == null) return;
+        boolean status = object.get("online").getAsBoolean();
+
+        if (!status) {
+            System.out.println("Server status: false");
+            return;
+        }
 
         int online = object.get("players").getAsJsonObject().get("online").getAsInt();
         int max = object.get("players").getAsJsonObject().get("max").getAsInt();
-        System.out.println("Server Status: " + object.get("online").getAsBoolean() + " (" + online + "/" + max + ")");
+        System.out.println("Server Status: true (" + online + "/" + max + ")");
     }
 
 }
